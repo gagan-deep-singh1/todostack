@@ -1,0 +1,53 @@
+*.py[cod]
+*.log
+*.pot
+
+# Pyenv
+.python-version
+
+# Unit test / coverage reports
+.coverage
+.tox
+htmlcov/
+
+# Translations
+*.mo
+
+# Developer
+.pydevproject
+.project
+.settings/
+.idea/
+.DS_Store
+*~
+*-local.scss
+dump.rdb
+
+# Celery Beat
+celerybeat-schedule
+celerybeat.pid
+
+# locals
+static-tmp
+media
+*.sqlite3
+.env
+local.py
+.sass-cache
+data/
+/node_modules/
+*bower_components/
+reports/
+jarvis/data
+*.ipynb
+*.pid
+
+# local test settings
+jarvis/static/
+jarvis/settings/test_settings_keepdb.py
+jarvis/settings/test_settings_nomigration.py
+celerybeat-schedule.db
+
+
+# editors
+.vscode
