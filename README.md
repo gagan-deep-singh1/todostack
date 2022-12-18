@@ -20,6 +20,8 @@ Todostack is a simple and user-friendly to-do list app that helps you manage you
 6. Click on the "Sign Up" button to create a new account.
 7. Fill out the sign-up form and click "Sign Up" to complete the process
 8. Once you are signed in, you can begin creating and managing your to-do list
+9. You can also run tests by running the following command in your terminal
+    `docker-compose up` then `docker-compose exec web bash` then `python manage.py test --settings=todostack.settings.test_settings`
 
 # Built With 
 1. Django
