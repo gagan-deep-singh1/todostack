@@ -28,9 +28,7 @@ class TaskListView(ListView, LoginRequiredMixin):
     context_object_name = "tasks"
 
     def get_queryset(self):
-        print(self.request.user)
         current_user = User.objects.get(system_user=self.request.user)
-        print('hey')
         return current_user.todo_items.all()
 
 
@@ -75,7 +73,6 @@ def move_tasks(request):
         # Gets the Task's Class name from the checkbox that is clicked
         task_class = request.POST["task_class"]
         # If the Clicked Task is an Active Task - Move it from Active Table to Complete Table
-        print(task_class)
         if "mark_as_done" in task_class:
             # Select the Task whose id matches with task_id
             done_task = TodoItem.objects.get(pk=task_id)
@@ -92,7 +89,6 @@ def move_tasks(request):
             undone_task.completed_at = None
             # Save the changes to the Database
             undone_task.save()
-        print("Success!")
 
         # Return redirect response to a different view with reverse 'tasks'
         return HttpResponse("Success!")
@@ -124,8 +120,6 @@ def add_new_task(request):
     if request.method == "POST":
         # Getting the task Name from Ajax
         task_name = request.POST["title"].strip()
-        print(request.POST)
-        print(task_name)
         # Dummy User - for the purpose of testing
         creator = request.user.todostack_user
         # Adding the task to the Database Table - Task
@@ -148,7 +142,6 @@ class DeleteTaskView(APIView, LoginRequiredMixin):
         del_task = TodoItem.objects.get(id=task_id)
         # Deleting the task from the Table
         del_task.delete()
-        print(f"Deleted the Task with ID: {task_id}")
         return HttpResponse("Deleted the Task")
 
 
@@ -163,7 +156,6 @@ def delete_task(request):
         del_task = TodoItem.objects.get(id=task_id)
         # Deleting the task from the Table
         del_task.delete()
-        print(f"Deleted the Task with ID: {task_id}")
         return HttpResponse("Deleted the Task")
 
 
@@ -207,7 +199,6 @@ class UpdateTaskView(APIView, LoginRequiredMixin):
         # Saving the changes to the Database
         changed_task.save()
         # For Debugging Purpose
-        print(f"Task Updated ID: {task_id}")
         return HttpResponse("Successfully Updated Tasks")
 
 
@@ -227,7 +218,6 @@ def update_task(request):
         # Saving the changes to the Database
         changed_task.save()
         # For Debugging Purpose
-        print(f"Task Updated ID: {task_id}")
         return HttpResponse("Successfully Updated Tasks")
 
 
